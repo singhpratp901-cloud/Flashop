@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOD LEVEL PREDICTION</title>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '1879630893419428');
+fbq('track', 'PageView');
+</script>
+
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1879630893419428&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050505;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+    min-height: 100vh;
+    padding: 25px 15px 45px;
+    background:
+        radial-gradient(circle at 50% 10%, #300009 0%, #0b0002 35%, #050505 75%);
+}
+
+.live {
+    width: fit-content;
+    margin: 0 auto 28px;
+    padding: 10px 22px;
+    border: 1px solid #45111b;
+    border-radius: 30px;
+    color: #999;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.live span {
+    color: #00e676;
+    margin-right: 7px;
+}
+
+.photo {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 30px;
+    padding: 5px;
+    border: 3px solid #ef0038;
+    border-radius: 50%;
+    box-shadow: 0 0 35px rgba(255, 0, 55, 0.3);
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 42px;
+    line-height: 1.05;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    margin-top: 15px;
+    text-align: center;
+    color: #c0002c;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.line {
+    width: 90%;
+    max-width: 650px;
+    height: 1px;
+    margin: 30px auto;
+    background: linear-gradient(
+        to right,
+        transparent,
+        #ed0037,
+        transparent
+    );
+}
+
+.telegram {
+    display: block;
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+    padding: 20px 15px;
+    border-radius: 14px;
+    background: linear-gradient(90deg, #d90032, #ff1748);
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    box-shadow: 0 8px 30px rgba(255, 0, 50, 0.25);
+}
+
+.telegram:active {
+    transform: scale(0.98);
+}
+
+.description {
+    max-width: 650px;
+    margin: 22px auto;
+    text-align: center;
+    color: #777;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.tags {
+    max-width: 650px;
+    margin: 25px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    padding: 10px 15px;
+    border: 1px solid #43101a;
+    border-radius: 25px;
+    background: #120305;
+    color: #c94a62;
+    font-size: 13px;
+}
+
+.stats {
+    width: 100%;
+    max-width: 650px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.stat {
+    padding: 25px 10px;
+    text-align: center;
+    border: 1px solid #2c080e;
+    border-radius: 16px;
+    background: rgba(40, 0, 8, 0.5);
+}
+
+.number {
+    color: #ff1744;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.label {
+    margin-top: 7px;
+    color: #666;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.redirect {
+    margin-top: 35px;
+    text-align: center;
+    color: #555;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.loader {
+    width: 75px;
+    height: 75px;
+    margin: 18px auto;
+    border: 5px solid #1b090c;
+    border-top-color: #ed0035;
+    border-radius: 50%;
+    position: relative;
+    animation: spin 1s linear infinite;
+}
+
+.counter {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff1744;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.footer {
+    margin-top: 25px;
+    text-align: center;
+    color: #33282b;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 600px) {
+
+    .main {
+        padding: 20px 14px 35px;
+    }
+
+    .photo {
+        width: 205px;
+        height: 205px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .subtitle {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .telegram {
+        font-size: 18px;
+        padding: 18px 10px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .stat {
+        padding: 20px 5px;
+    }
+
+    .number {
+        font-size: 26px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="main">
+
+    <div class="live">
+        <span>●</span> LIVE COMMUNITY ACTIVE
+    </div>
+
+    <div class="photo">
+        <img src="https://i.ibb.co/KcRV2NsB/IMG-20260810-211152-108.jpg" alt="JOD LEVEL PREDICTION">
+    </div>
+
+    <h1>JOD LEVEL<br>PREDICTION</h1>
+
+    <div class="subtitle">
+        PREMIUM TELEGRAM COMMUNITY
+    </div>
+
+    <div class="line"></div>
+
+    <a
+        class="telegram"
+        href="https://t.me/+nj508eEDvt9kYjA1"
+        target="_blank"
+        rel="noopener"
+        onclick="fbq('track', 'Lead');"
+    >
+        🚀 JOIN TELEGRAM NOW
+    </a>
+
+    <div class="description">
+        Join our exclusive Telegram community for daily updates,
+        signals and market insights.
+    </div>
+
+    <div class="tags">
+        <div class="tag">📈 DAILY SIGNALS</div>
+        <div class="tag">⚡ INSTANT UPDATES</div>
+        <div class="tag">🔒 SECURE COMMUNITY</div>
+        <div class="tag">💹 MARKET INSIGHTS</div>
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <div class="number">251</div>
+            <div class="label">ACTIVE USERS</div>
+        </div>
+
+        <div class="stat">
+            <div class="number">24/7</div>
+            <div class="label">LIVE ACCESS</div>
+        </div>
+
+        <div class="stat">
+            <div class="number">100%</div>
+            <div class="label">FREE TO JOIN</div>
+        </div>
+
+        <div class="stat">
+            <div class="number">∞</div>
+            <div class="label">DAILY UPDATES</div>
+        </div>
+
+    </div>
+
+    <div class="redirect">
+        AUTO REDIRECT IN
+    </div>
+
+    <div class="loader">
+        <div class="counter" id="counter">5</div>
+    </div>
+
+    <div class="footer">
+        JOD LEVEL PREDICTION © 2026
+    </div>
+
+</div>
+
+<script>
+let seconds = 5;
+
+setInterval(function() {
+    seconds--;
+
+    if (seconds < 1) {
+        seconds = 5;
+    }
+
+    document.getElementById("counter").textContent = seconds;
+}, 1000);
+</script>
+
+</body>
+</html>
